@@ -1,0 +1,65 @@
+{
+  "Close": "Close",
+  "Date": "Date",
+  "DragAndDropUpload": {
+    "Selected file(s)": "Selected file(s)",
+    "Uploads": {
+      "Clear image": "Clear image",
+      "Drag and Drop or choose file(s) here": "Drag and Drop or choose {{fileTypeCaption}} file(s) here",
+      "Exceed file size limit 5MB": "Exceed file size limit 5MB",
+      "Unsupported file format": "Unsupported file format"
+    }
+  },
+  "Edit": "Edit",
+  "End Time": "End Time",
+  "Location": "Location",
+  "Next": "Next",
+  "Other Location": "Other Location",
+  "Others": "Others",
+  "Processing": "Processing",
+  "Search": "Search",
+  "SidebarMenu": {
+    "Application management": {
+      "All": "All",
+      "Application": "Application",
+      "New": "New"
+    },
+    "Dashboard": "Dashboard",
+    "Event management": {
+      "All": "All",
+      "Event": "Event",
+      "New": "New"
+    },
+    "Facility booking": {
+      "All": "All",
+      "Facility Booking": "Facility Booking"
+    },
+    "Log out": "Log out",
+    "Profile management": {
+      "All": "All",
+      "Profile": "Profile"
+    },
+    "Property management": {
+      "All": "All",
+      "New": "New",
+      "Property": "Property"
+    },
+    "System": {
+      "System": "System"
+    }
+  },
+  "Start Time": "Start Time",
+  "Table": {
+    "Messages": {
+      "Load Data Error": "Load Data Error"
+    }
+  },
+  "Tags": {
+    "Messages": {
+      "No Tag Found": "No Tag Found"
+    }
+  },
+  "Time": "Time",
+  "to": "to",
+  "View": "View"
+}

@@ -1,0 +1,3 @@
+include:
+  - project: "$CI_PROJECT_NAMESPACE/setup"
+    file: "/ci-template/.gitlab-ci-web.yml"
