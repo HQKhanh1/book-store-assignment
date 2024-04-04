@@ -1,8 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @font-face {
   font-family: "Poppins";
   src: url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+}
+
+:root {
+  --background-main: #edebe4;
+  --background-header: #f3f2ec;
+  --background-top-color: white;
+  --background-color-footer: #f3f2ec;
+  --background-content: #f3f3ec;
+  --background-top-height: 550px;
+  --background-top-width: 593px;
+
+  --body-text-color: #757575;
+  --header-text-color: #777777;
+
+  --accent-color: #c5a992;
+  --dark-color: #2f2f2f;
+
+  --height-header: 100px;
+  --width-header: 100%;
+  --width-footer: 100%;
+  --padding-x-header: 50px;
+  --padding-y-header: 20px;
+
+  //Book Item
+  --book-item-background-color: #e0ddcc;
+  --book-item-share-background-color: #f1f1f1c9;
+  --book-item-background-wrapper-color: #e6e6e688;
+  --book-item-height: 480px;
+  --book-item-width: 255px;
+  --book-item-image-height: calc(var(--book-item-width) / (3 / 4));
+
+  //Wrap
+  --margin-wrap: 1.5rem;
+}
+
+.wrap {
+  + .wrap {
+    margin-right: var(--margin-wrap);
+  }
+}
+.wrap:first-child {
+  margin-right: var(--margin-wrap);
+}
+.wrap:last-child {
+  margin: 0;
 }

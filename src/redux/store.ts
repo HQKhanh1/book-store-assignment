@@ -2,10 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 
 // Remember add new reducer to here
 import appReducer from "./slices/appSlice";
+import booksReducer from "./slices/bookSlice";
+import loadingReducer from "./slices/loadingSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 const store = configureStore({
   reducer: {
     app: appReducer,
+    book: booksReducer,
+    loading: loadingReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

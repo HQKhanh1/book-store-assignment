@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import LayoutA from "./LayoutA";
+import LayoutDefault from "../LayoutDefault/LayoutDefault";
 
 type LayoutWrapperProps = {
   children: ReactNode;
@@ -7,7 +7,7 @@ type LayoutWrapperProps = {
 
 const LayoutWrapper = (props: LayoutWrapperProps) => {
   const { children, ...restProps } = props;
-  return <LayoutA {...restProps}>{children}</LayoutA>;
+  return <LayoutDefault {...restProps}>{children}</LayoutDefault>;
 };
 
 export default LayoutWrapper;
