@@ -1,3 +1,4 @@
+import { BookListQueryGenre } from "@/models/BookListQueryGenre";
 import API from "./api";
 
 export function generateBookListUrl(data: BookListQueryGenre): string {

@@ -1,4 +1,4 @@
-interface BookListQueryGenre {
+export interface BookListQueryGenre {
   genres: string;
   page: string;
   [key: string]: string;

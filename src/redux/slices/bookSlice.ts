@@ -1,3 +1,4 @@
+import { Book } from "@/models/Book";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 interface BooksState {
   bookList: Book[];

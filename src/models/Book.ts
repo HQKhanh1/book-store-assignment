@@ -1,4 +1,7 @@
-interface Book {
+import { Author } from "./Author";
+import { Availability } from "./Availability";
+
+export interface Book {
   key: string; // Unique identifier for the book
   title: string;
   edition_count: number;

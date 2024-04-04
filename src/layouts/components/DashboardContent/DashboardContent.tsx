@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   SearchOutlined,
   CloseCircleFilled,
@@ -10,6 +11,9 @@ import API from "@/libs/api";
 import * as Helper from "@/libs/helper";
 import { setListBook } from "@/redux/slices/bookSlice";
 import BookPage from "@/components/BookPage/BookPage";
+import { Book } from "@/models/Book";
+import { BookListQueryGenre } from "@/models/BookListQueryGenre";
+import { Genre } from "@/models/Genre";
 const DashboardContent = () => {
   const opts: Genre[] = [
     { name: "love", value: "All Genres" },
@@ -28,6 +32,10 @@ const DashboardContent = () => {
   console.log(chooseGenre);
 
   const searchParams = new URLSearchParams(location.search);
+  useEffect(() => {
+    fetchBookList();
+  }, []);
+
   const fetchBookList = async () => {
     try {
       const req = getBookListInput(searchParams);
@@ -37,19 +45,6 @@ const DashboardContent = () => {
       console.log(error);
     }
   };
-  useEffect(() => {
-    fetchBookList();
-  }, []);
-
-  useEffect(() => {
-    navigateToGenre();
-    fetchBookList();
-  }, [chooseGenre]);
-
-  const handleSetBookList = (bookList: Book[]) => {
-    dispatch(setListBook(bookList));
-  };
-
   const navigateToGenre = () => {
     const req: BookListQueryGenre = {
       genres: chooseGenre.name,
@@ -59,10 +54,25 @@ const DashboardContent = () => {
     console.log(urlNext);
     navigate(urlNext);
   };
-  const handleChooseGenre = (e: ChangeEvent) => {
+
+  useEffect(() => {
+    const onChangeGenre = async () => {
+      navigateToGenre();
+      await fetchBookList();
+    };
+    onChangeGenre();
+  }, [chooseGenre]);
+
+  const handleSetBookList = (bookList: Book[]) => {
+    dispatch(setListBook(bookList));
+  };
+
+  const handleChooseGenre = (e: ChangeEvent<HTMLSelectElement>) => {
     const chooseGenreName = e.target.value;
     const genre = opts.find((item) => item.name === chooseGenreName);
-    setChooseGenre(genre);
+    if (genre) {
+      setChooseGenre(genre);
+    }
   };
 
   return (

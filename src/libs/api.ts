@@ -2,6 +2,8 @@ import axios, { AxiosResponse } from "axios";
 import { setLoading } from "@/redux/slices/loadingSlice"; // Import action setLoading từ slice của Redux
 import * as Helper from "@/libs/helper";
 import store from "@/redux/store"; // Import store Redux
+import { BookListQueryGenre } from "@/models/BookListQueryGenre";
+import { Subjects } from "@/models/Subject";
 
 const API = {
   apiInstance: axios.create({

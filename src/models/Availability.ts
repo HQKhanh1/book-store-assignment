@@ -1,4 +1,4 @@
-interface Availability {
+export interface Availability {
   status: string; // Availability status (e.g., "open", "closed")
   available_to_browse: boolean;
   available_to_borrow: boolean;

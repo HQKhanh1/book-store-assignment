@@ -1,4 +1,6 @@
-interface Subjects {
+import { Book } from "./Book";
+
+export interface Subjects {
   key: string;
   name: string;
   subject_type: string;

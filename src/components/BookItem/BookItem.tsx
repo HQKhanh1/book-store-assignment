@@ -1,3 +1,4 @@
+import { Book } from "@/models/Book";
 import { ShareAltOutlined } from "@ant-design/icons";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useState } from "react";
