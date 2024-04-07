@@ -14,7 +14,6 @@ const App = () => {
   const isLoading = useAppSelector(
     (state: RootState) => state.loading
   ).initialState;
-  console.log(isLoading);
   useEffect(() => {
     setAntdLocale(i18n.language === "en" ? enUS : enUS);
   }, []);

@@ -4,6 +4,7 @@ import * as Helper from "@/libs/helper";
 import store from "@/redux/store"; // Import store Redux
 import { BookListQueryGenre } from "@/models/BookListQueryGenre";
 import { Subjects } from "@/models/Subject";
+import { SearchResults } from "@/models/SearchResults";
 
 const API = {
   apiInstance: axios.create({
@@ -18,6 +19,8 @@ const API = {
       LOGIN: "/example/login",
       BOOKS: {
         SUBJECT: "/subjects",
+        SEARCH:
+          "/search.json?title=$title&fields=key,title,author_name,cover_i,first_publish_year&page=$page&limit=12",
         ENDPOINT: ".json",
       },
     },
@@ -28,6 +31,13 @@ const API = {
     },
     getListBook(data: BookListQueryGenre): Promise<AxiosResponse<Subjects>> {
       const url = Helper.generateBookListUrl(data);
+      return API.apiInstance.get(url);
+    },
+    searchBookName(
+      data: string,
+      pageNum: number
+    ): Promise<AxiosResponse<SearchResults>> {
+      const url = Helper.searchBookNameUrl(data, pageNum);
       return API.apiInstance.get(url);
     },
   },

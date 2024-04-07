@@ -6,7 +6,11 @@ type Props = {
   bookItem: Book;
 };
 const BookItem: React.FC<Props> = ({ bookItem }) => {
-  const imageUrl = `${import.meta.env.VITE_COVER_API}/id/${bookItem.cover_id}-L.jpg`;
+  const defaultImage = "/src/assets/images/default_book_image.webp";
+  const bookCoverId = bookItem.cover_id ?? bookItem.cover_i;
+  const imageUrl = bookCoverId
+    ? `${import.meta.env.VITE_COVER_API}/id/${bookCoverId}-L.jpg`
+    : defaultImage;
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleImageLoad = () => {
@@ -39,7 +43,13 @@ const BookItem: React.FC<Props> = ({ bookItem }) => {
         <h2 className="text-center text-[22px] font-bold">{bookItem.title}</h2>
         <div className="flex items-center opacity-75">
           <span className="text-[12px] mr-1">by</span>
-          <h4>{bookItem.authors[0].name}</h4>
+          <h4>
+            {bookItem.authors
+              ? bookItem.authors[0].name
+              : bookItem.author_name
+                ? bookItem.author_name[0]
+                : ""}
+          </h4>
         </div>
         <label className="text-[10px]">
           since{" "}
