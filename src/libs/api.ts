@@ -4,7 +4,10 @@ import * as Helper from "@/libs/helper";
 import store from "@/redux/store"; // Import store Redux
 import { BookListQueryGenre } from "@/models/BookListQueryGenre";
 import { Subjects } from "@/models/Subject";
-import { SearchResults } from "@/models/SearchResults";
+import { SearchBookResults } from "@/models/SearchBookResults";
+import { SearchAuthorResults } from "@/models/SearchAuthorResults";
+import { BookDetail } from "@/models/BookDetail";
+import { SearchBookNameReq } from "@/models/SearchBookNameReq";
 
 const API = {
   apiInstance: axios.create({
@@ -19,8 +22,11 @@ const API = {
       LOGIN: "/example/login",
       BOOKS: {
         SUBJECT: "/subjects",
-        SEARCH:
+        SEARCH_BOOK_NAME:
           "/search.json?title=$title&fields=key,title,author_name,cover_i,first_publish_year&page=$page&limit=12",
+        SEARCH_AUTHOR_NAME:
+          "/search.json?q=$author_name&fields=author_name&page=1&limit=6",
+        BOOK_DETAIL: "/works",
         ENDPOINT: ".json",
       },
     },
@@ -34,10 +40,22 @@ const API = {
       return API.apiInstance.get(url);
     },
     searchBookName(
-      data: string,
-      pageNum: number
-    ): Promise<AxiosResponse<SearchResults>> {
-      const url = Helper.searchBookNameUrl(data, pageNum);
+      searchBookNameReq: SearchBookNameReq
+    ): Promise<AxiosResponse<SearchBookResults>> {
+      const url = Helper.searchBookNameUrl(
+        searchBookNameReq.searchBookName,
+        searchBookNameReq.numPage
+      );
+      return API.apiInstance.get(url);
+    },
+    searchAuthorName(
+      authorName: string
+    ): Promise<AxiosResponse<SearchAuthorResults>> {
+      const url = Helper.searchAuthorNameUrl(authorName);
+      return API.apiInstance.get(url);
+    },
+    getBookItemDetail(bookWorkId: string): Promise<AxiosResponse<BookDetail>> {
+      const url = Helper.getBookItemDetailUrl(bookWorkId);
       return API.apiInstance.get(url);
     },
   },

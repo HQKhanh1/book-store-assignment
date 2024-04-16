@@ -1,6 +1,6 @@
 import { Book } from "./Book";
 
-export interface SearchResults {
+export interface SearchBookResults {
   numFound: number;
   start: number;
   numFoundExact: boolean;

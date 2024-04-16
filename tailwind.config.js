@@ -3,7 +3,11 @@ export default {
   mode: "jit",
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        "auto-2": "repeat(2, auto)",
+      },
+    },
   },
   plugins: [
     require("tailwind-bootstrap-grid")({

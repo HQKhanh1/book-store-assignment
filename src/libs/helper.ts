@@ -43,18 +43,38 @@ export const getSearchParams = () => {
   return new URLSearchParams(window.location.search);
 };
 export function searchBookNameUrl(title: string, numPage: number) {
-  const url = API.API_PATH.APP.BOOKS.SEARCH.replace(
+  const url = API.API_PATH.APP.BOOKS.SEARCH_BOOK_NAME.replace(
     "$title",
     transferSearchBookNameData(title)
   ).replace("$page", numPage.toString());
   return url;
 }
+export function searchAuthorNameUrl(authorName: string) {
+  const url = API.API_PATH.APP.BOOKS.SEARCH_AUTHOR_NAME.replace(
+    "$author_name",
+    transferSearchBookNameData(authorName)
+  );
+  return url;
+}
 export function transferSearchBookNameData(data: string): string {
-  return data.replace(" ", "+");
+  return data.replace(/ /g, "+");
+}
+export function transferSearchAuthorNameData(data: string): string {
+  return data.replace(/ /g, "%20");
+}
+export function getBookId(data: string): string {
+  return data.replace("/works/", "");
 }
 export function getBooksInPageNum(pageNum: number, books: Book[]) {
   const limit = 12;
   const start = (pageNum - 1) * limit;
   const end = pageNum * limit - 1;
   return books.slice(start, end);
+}
+
+export function getBookItemDetailUrl(bookWorkId: string) {
+  return `${API.API_PATH.APP.BOOKS.BOOK_DETAIL}/${bookWorkId}${API.API_PATH.APP.BOOKS.ENDPOINT}`;
+}
+export function gotoBookItemDetailPage(bookId: string, authorName: string) {
+  return `/books/${bookId}?author=${authorName}`;
 }

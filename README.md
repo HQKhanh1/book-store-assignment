@@ -35,4 +35,4 @@
 ## Configuration
 
 Check the configuration on `.env.example`
-"# book-store-assignment" 
+"# book-store-assignment"

@@ -1,7 +1,16 @@
+import { useNavigate } from "react-router-dom";
+
 export function PageHeader() {
+  const navigate = useNavigate();
+  const goToHomePage = () => {
+    navigate("/");
+  };
   return (
     <header className="bg-[var(--background-header)] w-[var(--width-header)] px-[var(--padding-x-header)] py-[var(--padding-y-header)] z-50 flex absolute left-2/4 -translate-x-2/4 top-0 items-center justify-between">
-      <div className="flex flex-row items-center justify-center rounded-md hover:cursor-pointer">
+      <div
+        onClick={goToHomePage}
+        className="flex flex-row items-center justify-center rounded-md hover:cursor-pointer"
+      >
         <img
           className="w-12 h-12 "
           src="/src/assets/logo/logo.jpg"

@@ -1,7 +1,7 @@
 import { Layout } from "antd";
 import { ReactNode } from "react";
-import { PageHeader } from "../components/PageHeader/PageHeader";
-import PageFooter from "../components/PageFooter/PageFooter";
+import { PageHeader } from "../../components/PageHeader/PageHeader";
+import PageFooter from "../../components/PageFooter/PageFooter";
 const { Content } = Layout;
 
 type LayoutAProps = {
