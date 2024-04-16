@@ -25,6 +25,7 @@ const Dashboard: React.FC = () => {
 
   let pageParamInitial: number = 1;
   let searchBookNameParamInitial: string | null = "";
+  let initialGenres: Genre = opts[0];
   const searchParams = Helper.getSearchParams();
   if (searchParams.has("page") && !!searchParams.get("page")) {
     pageParamInitial = Number(searchParams.get("page"));
@@ -32,13 +33,22 @@ const Dashboard: React.FC = () => {
   if (searchParams.has("search") && !!searchParams.get("search")) {
     searchBookNameParamInitial = searchParams.get("search") || "";
   }
+  if (searchParams.has("genres") && !!searchParams.get("genres")) {
+    const genreName = searchParams.get("genres") || "";
+    if (genreName) {
+      const findGenre = opts.find((genre) => genre.name === genreName);
+      if (findGenre) {
+        initialGenres = findGenre;
+      }
+    }
+  }
   const [numPage, setNumPage] = useState(pageParamInitial);
   const [searchBookName, setSearchBookName] = useState(
     searchBookNameParamInitial
   );
   const [isCurrentRemove, setIsCurrentRemove] = useState(false);
   const [isSearchBookName, setIsSearchBookName] = useState(false);
-  const [chooseGenre, setChooseGenre] = useState(opts[0]);
+  const [chooseGenre, setChooseGenre] = useState(initialGenres);
   const bookListQuery: BookListQueryGenre = {
     genres: "",
     page: "1",
@@ -99,6 +109,7 @@ const Dashboard: React.FC = () => {
   };
   const handleChooseGenreChange = (genre: Genre) => {
     navigateToGenre(genre);
+    setNumPage(1);
     setChooseGenre(genre);
   };
   const navigateToPage = (pageNum: number) => {
