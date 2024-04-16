@@ -9,7 +9,7 @@ export function generateBookListUrl(data: BookListQueryGenre): string {
 }
 
 export function toBookListPage(data: BookListQueryGenre): string {
-  const url = `/?genres=${data.genres}&page=${data.page}`;
+  const url = `/book-store-assignment/?genres=${data.genres}&page=${data.page}`;
   return url;
 }
 
@@ -76,5 +76,5 @@ export function getBookItemDetailUrl(bookWorkId: string) {
   return `${API.API_PATH.APP.BOOKS.BOOK_DETAIL}/${bookWorkId}${API.API_PATH.APP.BOOKS.ENDPOINT}`;
 }
 export function gotoBookItemDetailPage(bookId: string, authorName: string) {
-  return `/books/${bookId}?author=${authorName}`;
+  return `/book-store-assignment/books/${bookId}?author=${authorName}`;
 }

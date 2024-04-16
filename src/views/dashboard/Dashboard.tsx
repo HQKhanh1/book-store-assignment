@@ -88,7 +88,9 @@ const Dashboard: React.FC = () => {
     if (searchBookName) {
       setSearchBookName(searchBookName);
       setNumPage(1);
-      navigate(`?search=${Helper.transferSearchBookNameData(searchBookName)}`);
+      navigate(
+        `/book-store-assignment/?search=${Helper.transferSearchBookNameData(searchBookName)}`
+      );
     }
   };
   const handleRemoveInputSearchValue = () => {

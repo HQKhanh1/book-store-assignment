@@ -13,11 +13,11 @@ const BookItemDetail = loadable(
 const appRoute = () => {
   return [
     {
-      path: "/",
+      path: "/book-store-assignment/",
       element: <Dashboard />,
     },
     {
-      path: "/books/:keys",
+      path: "/book-store-assignment/books/:keys",
       element: <BookItemDetail />,
     },
   ];

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 export function PageHeader() {
   const navigate = useNavigate();
   const goToHomePage = () => {
-    navigate("/");
+    navigate("/book-store-assignment/");
   };
   return (
     <header className="bg-[var(--background-header)] w-[var(--width-header)] px-[var(--padding-x-header)] py-[var(--padding-y-header)] z-50 flex absolute left-2/4 -translate-x-2/4 top-0 items-center justify-between">
