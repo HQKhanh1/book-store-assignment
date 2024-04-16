@@ -11,7 +11,11 @@ export function PageHeader() {
         onClick={goToHomePage}
         className="flex flex-row items-center justify-center rounded-md hover:cursor-pointer"
       >
-        <img className="w-12 h-12 " src="/logo/logo.jpg" alt="logo" />
+        <img
+          className="w-12 h-12 "
+          src="https://i.ibb.co/c8nLSh8/logo.jpg"
+          alt="logo"
+        />
         <h1 className="ml-2 text-2xl font-bold">Book Store</h1>
       </div>
       <div className="flex items-center gap-5 md:gap-10">

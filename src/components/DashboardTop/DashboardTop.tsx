@@ -17,7 +17,10 @@ function DashboardTop() {
             <ArrowRightOutlined className="pl-[10px] group-hover:pl-15" />
           </button>
         </div>
-        <img src="/images/main-banner2.jpg" alt="main-banner" />
+        <img
+          src="https://i.ibb.co/LhD09Zy/main-banner2.jpg"
+          alt="main-banner"
+        />
       </div>
     </section>
   );
