@@ -21,7 +21,7 @@ const BookItemDetail: React.FC = () => {
   );
 
   const dispatch = useAppDispatch();
-  const defaultImage = "/src/assets/images/default_book_image.webp";
+  const defaultImage = "/images/default_book_image.webp";
   const authorDetail = useAppSelector(
     (state: RootState) => state.book.authorDetail
   );
@@ -34,7 +34,7 @@ const BookItemDetail: React.FC = () => {
     }
   }, []);
   const getImageCover = (bookItemDetail: BookDetail): string => {
-    const bookCoverId = bookItemDetail.covers[0];
+    const bookCoverId = bookItemDetail.covers ? bookItemDetail.covers[0] : null;
     return bookCoverId
       ? `${import.meta.env.VITE_COVER_API}/id/${bookCoverId}-L.jpg`
       : defaultImage;
@@ -46,7 +46,6 @@ const BookItemDetail: React.FC = () => {
       : "";
   };
   const getPlaces = (bookItemDetail: BookDetail): string => {
-    console.log(bookItemDetail);
     if (bookItemDetail.subject_places) {
       const places = bookItemDetail.subject_places.reduce(
         (item, current, index) => {
@@ -64,49 +63,55 @@ const BookItemDetail: React.FC = () => {
     }
   };
   const getDescription = (bookItemDetail: BookDetail): string => {
-    if (typeof bookItemDetail.description === "string") {
-      return bookItemDetail.description;
+    if (bookItemDetail.description) {
+      if (typeof bookItemDetail.description === "string") {
+        return bookItemDetail.description;
+      } else {
+        return bookItemDetail.description.value;
+      }
     } else {
-      return bookItemDetail.description.value;
+      return "";
     }
   };
   return (
-    <div className="container pt-[150px] px-24 pb-10">
-      <div className="flex flex-row justify-start gap-10">
-        <img
-          loading="lazy"
-          src={getImageCover(bookItemDetail)}
-          className="w-[var(--book-item-detail-image-width)] h-[var(--book-item-detail-image-height)] object-cover"
-          alt="book cover"
-        />
-        <div className="w-fit">
-          <div className="flex flex-col">
-            <h1 className="text-[48px] font-semibold">
-              {bookItemDetail.title}
-            </h1>
-            <div className="grid grid-cols-auto-2 gap-3 items-start">
-              <h6 className="mt-[0.3rem]">By:</h6>
-              <h4 className="text-[17px] font-semibold">
-                {authorDetail.name === "" ? "unknown" : authorDetail.name}
-              </h4>
-              <h6 className="mt-[0.3rem]">Since:</h6>
-              <h4 className="text-[17px] font-semibold">
-                {getCreatedDate(bookItemDetail)}
-              </h4>
-              <h6 className="mt-[0.3rem]">Place:</h6>
-              <h4 className="text-[17px] font-semibold">
-                {getPlaces(bookItemDetail)}
-              </h4>
+    !!bookItemDetail.key && (
+      <div className="container pt-[150px] px-24 pb-10">
+        <div className="flex flex-row justify-start gap-10">
+          <img
+            loading="lazy"
+            src={getImageCover(bookItemDetail)}
+            className="w-[var(--book-item-detail-image-width)] h-[var(--book-item-detail-image-height)] object-cover"
+            alt="book cover"
+          />
+          <div className="w-fit">
+            <div className="flex flex-col">
+              <h1 className="text-[48px] font-semibold">
+                {bookItemDetail.title}
+              </h1>
+              <div className="grid grid-cols-auto-2 gap-3 items-start">
+                <h6 className="mt-[0.3rem]">By:</h6>
+                <h4 className="text-[17px] font-semibold">
+                  {authorDetail.name === "" ? "unknown" : authorDetail.name}
+                </h4>
+                <h6 className="mt-[0.3rem]">Since:</h6>
+                <h4 className="text-[17px] font-semibold">
+                  {getCreatedDate(bookItemDetail)}
+                </h4>
+                <h6 className="mt-[0.3rem]">Place:</h6>
+                <h4 className="text-[17px] font-semibold">
+                  {getPlaces(bookItemDetail)}
+                </h4>
+              </div>
             </div>
-          </div>
-          <div className="mt-10">
-            <p className="text-[12px] w-[var(--book-item-description-width)]">
-              {getDescription(bookItemDetail)}
-            </p>
+            <div className="mt-10">
+              <p className="text-[12px] w-[var(--book-item-description-width)]">
+                {getDescription(bookItemDetail)}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    )
   );
 };
 export default BookItemDetail;

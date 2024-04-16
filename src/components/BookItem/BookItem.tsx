@@ -9,7 +9,7 @@ type Props = {
   bookItem: Book;
 };
 const BookItem: React.FC<Props> = ({ bookItem }) => {
-  const defaultImage = "/src/assets/images/default_book_image.webp";
+  const defaultImage = "/images/default_book_image.webp";
   const bookCoverId = bookItem.cover_id ?? bookItem.cover_i;
   const imageUrl = bookCoverId
     ? `${import.meta.env.VITE_COVER_API}/id/${bookCoverId}-L.jpg`
