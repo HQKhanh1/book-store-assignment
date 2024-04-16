@@ -76,5 +76,5 @@ export function getBookItemDetailUrl(bookWorkId: string) {
   return `${API.API_PATH.APP.BOOKS.BOOK_DETAIL}/${bookWorkId}${API.API_PATH.APP.BOOKS.ENDPOINT}`;
 }
 export function gotoBookItemDetailPage(bookId: string, authorName: string) {
-  return `/book-store-assignment/books/${bookId}?author=${authorName}`;
+  return `/book-store-assignment/books/?key=${bookId}&&author=${authorName}`;
 }
