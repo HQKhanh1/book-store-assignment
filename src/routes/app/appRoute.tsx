@@ -17,7 +17,7 @@ const appRoute = () => {
       element: <Dashboard />,
     },
     {
-      path: "/book-store-assignment/books/:keys",
+      path: "/book-store-assignment/books/",
       element: <BookItemDetail />,
     },
   ];

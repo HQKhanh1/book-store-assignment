@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 import * as Helper from "@/libs/helper";
 import { BookDetail } from "@/models/BookDetail";
@@ -10,9 +9,8 @@ import {
   apiSearchAuthorName,
 } from "@/redux/slices/bookSlice";
 const BookItemDetail: React.FC = () => {
-  const params = useParams();
-  const bookWorkId = params.keys?.toString();
   const searchParams = Helper.getSearchParams();
+  const bookWorkId = searchParams.has("key") ? searchParams.get("key") : null;
   const authorParam = searchParams.has("author")
     ? searchParams.get("author")
     : null;
