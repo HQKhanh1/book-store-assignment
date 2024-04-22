@@ -13,6 +13,7 @@ interface BooksState {
   authorDetail: Author;
   bookDetail: BookDetail;
 }
+
 const initialBookDetail: BookDetail = {
   description: {
     type: "",
